@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 
 const Page = () => {
@@ -8,11 +9,18 @@ const Page = () => {
     const [selectedBox, setSelectedBox] = useState<number>(0);
     const [isMobile, setIsMobile] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
   const sections = ["Home", "Projects", "Contact"];
 
     const content = [
         [
+            { title: "about me", className: "bg-yellow-500" },
+            { title: "resume", className: "bg-yellow-500" },
+            { title: "portfolio", className: "bg-yellow-500 large" },
+            { title: "linkedin", className: "bg-yellow-500" },
+            { title: "notion", className: "bg-yellow-500" },
             { title: "about me", className: "bg-yellow-500" },
             { title: "resume", className: "bg-yellow-500" },
             { title: "portfolio", className: "bg-yellow-500 large" },
@@ -32,17 +40,26 @@ const Page = () => {
             { title: "tran-steven", className: "bg-purple-500 large" },
             { title: "tran-steven", className: "bg-purple-500" },
             { title: "tran-steven", className: "bg-purple-500" },
+            { title: "email", className: "bg-purple-500" },
+            { title: "phone", className: "bg-purple-500" },
+            { title: "tran-steven", className: "bg-purple-500 large" },
+            { title: "tran-steven", className: "bg-purple-500" },
+            { title: "tran-steven", className: "bg-purple-500" },
         ],
     ];
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
         const key = e.key.toLowerCase();
         if (key === "arrowup") {
+        const key = e.key.toLowerCase();
+        if (key === "arrowup") {
             if (selectedBox === 1) setSelectedBox(0);
             if (selectedBox === 4) setSelectedBox(3);
         } else if (key === "arrowdown") {
+        } else if (key === "arrowdown") {
             if (selectedBox === 0) setSelectedBox(1);
             if (selectedBox === 3) setSelectedBox(4);
+        } else if (key === "arrowright") {
         } else if (key === "arrowright") {
             if (selectedBox === 2) setSelectedBox(3);
             else if (selectedBox === 3 || selectedBox === 4) {
@@ -50,11 +67,13 @@ const Page = () => {
                 setSelectedBox(0);
             } else setSelectedBox(2);
         } else if (key === "arrowleft") {
+        } else if (key === "arrowleft") {
             if (selectedBox === 2) setSelectedBox(0);
             else if (selectedBox === 0) {
                 setActiveSection((prev) => (prev - 1 + sections.length) % sections.length);
                 setSelectedBox(4);
             } else setSelectedBox(2);
+        } else if (key === "enter" || key === "a") {
         } else if (key === "enter" || key === "a") {
             alert(`Selected: ${content[activeSection][selectedBox].title}`);
         }
